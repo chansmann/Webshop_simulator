@@ -1,0 +1,2 @@
+faker>=13.11.1
+requests
