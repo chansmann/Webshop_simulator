@@ -25,11 +25,11 @@ def main():
                 if boolean==0:
                     cust_data = gen_customer("B")
                     response = requests.post(URL + API['create_customer'], data = cust_data)
-                    print("Customer "+ str(customer) + " was created with response code: "+ str(response))
+                    print("Customer "+ str(customer) + " created with response code: "+ str(response))
                 else:
                     cust_data = gen_customer("C")
                     response = requests.post(URL + API['create_customer'], data = cust_data)
-                    print("Customer "+ str(customer) + "was created with response code: "+ str(response))
+                    print("Customer "+ str(customer) + "created with response code: "+ str(response))
             break
         except ValueError:
             print("Please use (whole) numbers only.")
@@ -48,12 +48,12 @@ def main():
                 order_data = gen_order(random_customer)
                 print(order_data)
                 response = requests.post(URL + API['create_order'], data = json.dumps(order_data))
-                print("Order "+ str(order) + " was created with response code: "+ str(response))
+                print("Order "+ str(order) + " created with response code: "+ str(response))
             break
         except ValueError:
-            print("Please use numbers only.")
+            print("Please use (whole) numbers only.")
 
-    print("Job is done")
+    print("Job is done!")
 
 main()
 
