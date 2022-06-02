@@ -3,7 +3,7 @@ from random import randint, choice
 import json
 
 
-from fake_data_generator import gen_customer, gen_order
+from fake_data_generator import gen_customer, gen_order, gen_address
 
 
 
@@ -11,10 +11,39 @@ URL = 'http://127.0.0.1:8000/'
 API = {
     'create_customer' : 'savetokunde',
     'create_order' : 'api/createOrder',
-    'all_customer' : 'api/getallCustomers'
-}
+    'all_customer' : 'api/getallCustomers',
+    'create_adress' : 'rest/adress/',
+    'create_customer' : 'rest/customer/'
+    }
 
 def main():
+
+    #response = requests.post(URL + API['create_adress']+'33/', data = {'adressID' : 41})
+    address_data = gen_address()
+    response = requests.post(URL + API['create_address'], data = address_data)
+    print(address_data)
+    #response = requests.post(URL + API['create_adress'], data = address_data)
+    #response = requests.delete(URL + API['create_adress']+"35/")
+    #response_id = json.loads(response.text)
+    #print(response_id["adressid"])
+
+    data = {
+    'album_name': 'The Grey Album',
+    'artist': 'Danger Mouse',
+    'tracks': [
+        {'order': 1, 'title': 'Public Service Announcement', 'duration': 245},
+        {'order': 2, 'title': 'What More Can I Say', 'duration': 264},
+        {'order': 3, 'title': 'Encore', 'duration': 159},
+    ],
+}
+
+    customer_data = gen_customer('C')
+    #customer_data['adressid'] = requests.get(URL + API['create_adress']+str(response_id["adressid"])+'/')
+
+    response = requests.post(URL + API['create_customer'], data = customer_data)
+    response_cust = json.loads(response.text)
+    print(response_cust["kundenID"])
+
     while True:
         customer_amount = input("How many customers do you wish to create?: ")
         try:

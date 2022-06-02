@@ -3,36 +3,39 @@ from datetime import timedelta
 from random import randint, uniform, choice
 #import json
 
-
-def gen_customer(customer_type="C"):
+def gen_address():
     fake = Faker("de_DE")
 
     address_parts = fake.address().split()
 
-    cust_data = {
+    data = {
     'strasse' : address_parts[0], 
     'hausnummer': address_parts[1], 
     'plz': address_parts[2],
     'ort': address_parts[3],
     'land': 'Deutschland',
+    }
+
+    return data
+
+def gen_customer(customer_type="C"):
+    fake = Faker("de_DE")
+
+    cust_data = {
     'telefonnummer': fake.phone_number()
     }
 
     if customer_type=="C":
-        cust_data['unternehmen'] = ""
-        cust_data['kundentyp'] = "C"
+        cust_data['unternehmen'] = " "
+        cust_data['typ'] = "C"
         cust_data['vorname'] = fake.first_name()
         cust_data['nachname'] = fake.last_name()
-        cust_data['u_vorname'] = ""
-        cust_data['u_nachname'] = ""
         cust_data['email'] = fake.ascii_email()
     else:
         cust_data['unternehmen'] = fake.company()
         cust_data['kundentyp'] = "B"
-        cust_data['vorname'] = ""
-        cust_data['nachname'] = ""
-        cust_data['u_vorname'] = fake.first_name()
-        cust_data['u_nachname'] = fake.last_name()
+        cust_data['vorname'] = fake.first_name()
+        cust_data['nachname'] = fake.last_name()
         cust_data['email'] = fake.ascii_company_email()
 
     return cust_data
