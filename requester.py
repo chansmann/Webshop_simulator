@@ -4,7 +4,7 @@ import requests
 import json
 
 URL = 'http://dck02.bw.hs-offenburg.de:5000'
-URL = 'http://127.0.0.1:8000/'
+#URL = 'http://127.0.0.1:8000/'
 
 API = {
     'adress' : 'rest/adress/',

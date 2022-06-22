@@ -4,33 +4,19 @@ from fake_data_generator import gen_customer, gen_order, gen_address, gen_orderi
 from requester import post_request, next_order_get_request
 
 
-"""
-URL = 'http://dck02.bw.hs-offenburg.de:5000'
-URL = 'http://127.0.0.1:8000/'
-
-API = {
-    'adress' : 'rest/adress/',
-    'customers' : 'rest/customer/',
-    'orders' : 'rest/order/',
-    'order_item' : 'rest/order_item/'
-    }
-"""
-
 def main():
 
-    #response = requests.delete(URL + API['orders']+"C-14/")
-    #response = requests.delete(URL + API['order_item']+"1C-14/")
-    #response = requests.delete(URL + API['adress']+"42/")
-
     while True:
-        customer_amount = input("How many customers do you wish to create?: ") #user input
+        #user input
+        customer_amount = input("How many customers do you wish to create?: ") 
 
         try:
 
             #if user dont enter an integer an exception will be raised
             customer_amount = int(customer_amount) 
 
-            for customer in range(customer_amount): #loop to create all the customers
+            #loop to create all the customers
+            for customer in range(customer_amount): 
 
                 #add one to customers for a proper output
                 customer += 1 
