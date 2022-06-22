@@ -27,11 +27,14 @@ def gen_address() -> dict:
 
 def gen_customer(customer_type : str = "C" , adress_id : str = '') -> dict:
     """
-    generates fake customer parts and returns a dict of it.
-    Generated data depends on the given customer type
+    Generate fake customer data and returns a dict with data.
+    Generated data depends on the given customer type.
     """
+
+    #class to create german dummy data
     fake = Faker("de_DE")
 
+    #creating a dict with the generated dummy data
     cust_data = {
         'adressID': adress_id,
         'vorname': fake.first_name(),
@@ -125,5 +128,5 @@ def gen_orderitem(order_id : str , einzelpreis : list, pos_menge : list, pos_num
         "bestellnummer": order_id,
         "artikelID": 1
     }
-    
+
     return pos_data
